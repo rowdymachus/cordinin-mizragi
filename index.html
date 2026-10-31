@@ -294,6 +294,65 @@ mark { background: color-mix(in srgb, var(--hazard) 35%, transparent); color: va
 @media (prefers-reduced-motion: no-preference) { html.fx .wn { animation: slamIn .45s cubic-bezier(.2,1.4,.4,1) both; } }
 .upd { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 72; width: min(94vw, 520px); display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; background: var(--surface); border: 1px solid var(--hazard); border-radius: var(--r); padding: 10px 12px; box-shadow: 0 10px 40px rgba(0,0,0,.6); }
 .upd .btn { min-height: 40px; padding: 8px 12px; font-size: 1rem; }
+/* emergency */
+.link-btn.sos { color: #fff; background: var(--accent); border-color: var(--accent); }
+.sos-alert { --c: var(--accent); border: 2px solid var(--accent); border-radius: var(--r); padding: 16px; display: grid; gap: 10px; background: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--accent) 14%, var(--surface)) 0 14px, var(--surface) 14px 28px); }
+.sos-alert .label { color: var(--accent); }
+.sos-alert .title { font-family: var(--font-display); font-weight: 900; font-size: 1.9rem; line-height: 1; text-transform: uppercase; }
+.sos-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(6.5em, 1fr)); gap: 8px; }
+.sos-btns .btn { background: var(--accent); border-color: var(--accent); color: #fff; min-height: 52px; }
+@media (prefers-reduced-motion: no-preference) { html.fx .sos-alert { animation: sosPulse 1.6s ease-in-out infinite; } }
+@keyframes sosPulse { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent); } 50% { box-shadow: 0 0 28px 2px color-mix(in srgb, var(--accent) 55%, transparent); } }
+.sos-seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sos-seg button { padding-left: 4px; padding-right: 4px; }
+.sos-rows { display: grid; gap: 8px; }
+.sos-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: var(--r); padding: 8px 8px 8px 12px; }
+.sos-row .btn { background: var(--accent); border-color: var(--accent); color: #fff; min-height: 44px; padding: 8px 12px; }
+.btn.sos-mini { color: var(--accent); border-color: var(--accent); background: transparent; }
+.sos-steps { counter-reset: none; }
+.sos-step { align-items: start; }
+.sos-step .tickcell { padding-top: 14px; }
+.sos-main { padding: 12px 14px 14px 0; display: grid; gap: 8px; min-width: 0; }
+.sos-main .item-sub { font-size: .9rem; }
+.sos-step.done .sos-body, .sos-step.done .sos-units { opacity: .8; }
+.sos-units { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.sos-units a { display: block; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--r); text-decoration: none; background: var(--surface); font-weight: 700; }
+.sos-units a.done { color: var(--good); border-color: color-mix(in srgb, var(--good) 50%, var(--line)); }
+.sos-body > summary { cursor: pointer; font-weight: 700; color: var(--c); padding: 4px 0; }
+.sos-body .unit-body { padding-top: 8px; }
+.sheet { margin: 0; padding-left: 1.2em; display: grid; gap: 12px; }
+.sheet p { margin-top: 2px; }
+.sheet-q { border-left: 3px solid var(--c); padding-left: 8px; font-style: italic; }
+.rules { margin: 0; padding-left: 1.1em; display: grid; gap: 8px; }
+/* install + share */
+.steps-big { margin: 0; padding: 0; list-style: none; counter-reset: st; display: grid; gap: 14px; }
+.steps-big > li { counter-increment: st; display: grid; grid-template-columns: 2.2em minmax(0, 1fr); gap: 10px; align-items: start; }
+.steps-big > li > div { padding-top: .35em; min-width: 0; }
+.steps-big > li::before { content: counter(st); display: grid; place-items: center; width: 2.2em; height: 2.2em; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--font-display); font-weight: 900; font-size: 1rem; }
+.ico { width: 1.35em; height: 1.35em; vertical-align: -.32em; fill: none; stroke: var(--hazard); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ico.dots { fill: var(--hazard); stroke: none; }
+.share-grid { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr); gap: 14px; align-items: start; }
+@media (max-width: 420px) { .share-grid { grid-template-columns: minmax(0, 1fr); } .share-grid .qr { max-width: 170px; } }
+.qr { background: #fff; padding: 8px; border-radius: var(--r); line-height: 0; }
+.qr svg { width: 100%; height: auto; display: block; }
+.share-side { display: grid; gap: 10px; }
+.inst-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; background: color-mix(in srgb, var(--hazard) 8%, var(--surface)); border: 1px solid color-mix(in srgb, var(--hazard) 45%, var(--line)); border-radius: var(--r); padding: 12px 14px; }
+@media (max-width: 420px) { .inst-card { grid-template-columns: minmax(0, 1fr); } }
+.paste-card { border-color: var(--good); }
+/* accessibility */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: fixed; left: 8px; top: -60px; z-index: 100; background: var(--hazard); color: #000; border: 0; border-radius: var(--r); padding: 10px 14px; font-weight: 700; }
+.skip:focus { top: 8px; }
+h1[tabindex="-1"]:focus { outline: none; }
+html.hc { --muted: #c9d1dc; --line: #5a6574; --surface: #0e1115; --surface-2: #161a20; --ink: #ffffff; }
+html.hc body { background-image: none; }
+html.hc .btn, html.hc .link-btn, html.hc .chip { border-width: 2px; }
+html.hc .item.done { opacity: .75; }
+html.easy body { line-height: 1.7; letter-spacing: .01em; background-image: none; }
+html.easy h1, html.easy h2, html.easy .wordmark, html.easy .title, html.easy .sos-alert .title, html.easy .ready-pct, html.easy .big { font-family: var(--font-body) !important; letter-spacing: normal !important; }
+html.easy h1, html.easy h2 { text-transform: none !important; font-weight: 700; line-height: 1.15; }
+html.easy .label, html.easy .kicker, html.easy .chip, html.easy .kind, html.easy .link-btn, html.easy .btn, html.easy nav.tabs .in > a, html.easy nav.tabs .in > button, html.easy .stamp, html.easy .prog, html.easy .lbl, html.easy .title, html.easy .name, html.easy .note strong { font-family: var(--font-body) !important; text-transform: none !important; letter-spacing: normal !important; }
+html.easy .item-sub, html.easy .small { font-size: .95rem; }
 /* course picker */
 .pick-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 @media (max-width: 560px) { .pick-grid { grid-template-columns: minmax(0, 1fr); } }
@@ -428,6 +487,7 @@ html.js #static { display: none; }
 </style>
 </head>
 <body>
+<button type="button" id="skip" class="skip">Skip to content</button>
 <nav class="tabs top-nav" id="top-nav" aria-label="Sections"><div class="in">
   <a href="#plan" data-tab="plan"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v5M12 18v5M1 12h5M18 12h5"/></svg>Mission</a>
   <a href="#notes" data-tab="notes"><svg viewBox="0 0 24 24"><path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M7 12h10M7 15h6"/></svg>Intel</a>
@@ -437,7 +497,8 @@ html.js #static { display: none; }
   <a href="#stats" data-tab="stats"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Stats</a>
   <button type="button" class="snd-btn" data-sound aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg><span class="snd-lbl">FX</span></button>
 </div><div id="sound-panel" class="sound-panel" hidden></div></nav>
-<main id="app" aria-live="polite"></main>
+<main id="app"></main>
+<div id="sr-live" class="sr-only" role="status" aria-live="polite"></div>
 <nav class="tabs end-nav" aria-label="Sections (bottom of page)"><div class="in">
   <a href="#plan" data-tab="plan"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 1v5M12 18v5M1 12h5M18 12h5"/></svg>Mission</a>
   <a href="#notes" data-tab="notes"><svg viewBox="0 0 24 24"><path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M7 12h10M7 15h6"/></svg>Intel</a>
@@ -3082,6 +3143,9 @@ COURSES.push({
 
 </script>
 <script>
+  /* ---------- QR code for the public link (generated at build time) ---------- */
+  var GH_URL = 'https://rowdymachus.github.io/cordinin-mizragi/';
+  var QR_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 37 37" shape-rendering="crispEdges" role="img" aria-label="QR code for the Secret Weapon link"><rect width="37" height="37" fill="#fff"/><path fill="#000" d="M2 2h7v1h-7zM13 2h1v1h-1zM20 2h4v1h-4zM25 2h1v1h-1zM28 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM13 3h2v1h-2zM17 3h2v1h-2zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM28 3h1v1h-1zM34 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM12 4h1v1h-1zM16 4h1v1h-1zM18 4h1v1h-1zM21 4h4v1h-4zM26 4h1v1h-1zM28 4h1v1h-1zM30 4h3v1h-3zM34 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM10 5h1v1h-1zM20 5h1v1h-1zM24 5h3v1h-3zM28 5h1v1h-1zM30 5h3v1h-3zM34 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h8v1h-8zM22 6h1v1h-1zM25 6h1v1h-1zM28 6h1v1h-1zM30 6h3v1h-3zM34 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h3v1h-3zM14 7h3v1h-3zM20 7h2v1h-2zM23 7h2v1h-2zM28 7h1v1h-1zM34 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM26 8h1v1h-1zM28 8h7v1h-7zM10 9h2v1h-2zM13 9h1v1h-1zM16 9h1v1h-1zM18 9h1v1h-1zM21 9h4v1h-4zM26 9h1v1h-1zM2 10h1v1h-1zM4 10h5v1h-5zM11 10h2v1h-2zM14 10h3v1h-3zM19 10h1v1h-1zM21 10h1v1h-1zM24 10h1v1h-1zM28 10h5v1h-5zM3 11h1v1h-1zM6 11h2v1h-2zM9 11h1v1h-1zM13 11h3v1h-3zM18 11h2v1h-2zM21 11h2v1h-2zM25 11h1v1h-1zM28 11h2v1h-2zM31 11h2v1h-2zM34 11h1v1h-1zM3 12h1v1h-1zM5 12h4v1h-4zM10 12h10v1h-10zM23 12h1v1h-1zM26 12h3v1h-3zM30 12h1v1h-1zM32 12h2v1h-2zM2 13h1v1h-1zM4 13h2v1h-2zM7 13h1v1h-1zM9 13h2v1h-2zM12 13h1v1h-1zM14 13h2v1h-2zM17 13h1v1h-1zM19 13h6v1h-6zM27 13h1v1h-1zM30 13h3v1h-3zM34 13h1v1h-1zM2 14h5v1h-5zM8 14h1v1h-1zM10 14h1v1h-1zM12 14h1v1h-1zM14 14h1v1h-1zM16 14h1v1h-1zM18 14h1v1h-1zM21 14h2v1h-2zM26 14h2v1h-2zM29 14h3v1h-3zM3 15h2v1h-2zM9 15h1v1h-1zM11 15h2v1h-2zM17 15h1v1h-1zM20 15h1v1h-1zM23 15h1v1h-1zM25 15h1v1h-1zM28 15h2v1h-2zM31 15h4v1h-4zM2 16h2v1h-2zM5 16h4v1h-4zM10 16h3v1h-3zM14 16h1v1h-1zM16 16h3v1h-3zM22 16h2v1h-2zM26 16h5v1h-5zM32 16h2v1h-2zM2 17h2v1h-2zM12 17h2v1h-2zM16 17h2v1h-2zM20 17h1v1h-1zM23 17h6v1h-6zM30 17h3v1h-3zM2 18h2v1h-2zM5 18h2v1h-2zM8 18h1v1h-1zM12 18h1v1h-1zM14 18h1v1h-1zM16 18h2v1h-2zM19 18h1v1h-1zM24 18h1v1h-1zM26 18h2v1h-2zM29 18h2v1h-2zM34 18h1v1h-1zM4 19h1v1h-1zM6 19h1v1h-1zM9 19h2v1h-2zM12 19h2v1h-2zM18 19h1v1h-1zM20 19h2v1h-2zM25 19h1v1h-1zM27 19h3v1h-3zM31 19h4v1h-4zM5 20h2v1h-2zM8 20h1v1h-1zM11 20h1v1h-1zM13 20h2v1h-2zM16 20h2v1h-2zM20 20h1v1h-1zM22 20h1v1h-1zM24 20h1v1h-1zM27 20h4v1h-4zM32 20h2v1h-2zM5 21h1v1h-1zM7 21h1v1h-1zM11 21h1v1h-1zM13 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM21 21h1v1h-1zM23 21h3v1h-3zM27 21h1v1h-1zM29 21h6v1h-6zM2 22h1v1h-1zM4 22h2v1h-2zM7 22h3v1h-3zM11 22h1v1h-1zM13 22h1v1h-1zM15 22h2v1h-2zM20 22h1v1h-1zM23 22h1v1h-1zM27 22h1v1h-1zM29 22h3v1h-3zM33 22h2v1h-2zM2 23h1v1h-1zM4 23h1v1h-1zM10 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM16 23h4v1h-4zM22 23h2v1h-2zM25 23h1v1h-1zM28 23h1v1h-1zM34 23h1v1h-1zM2 24h1v1h-1zM5 24h2v1h-2zM8 24h1v1h-1zM10 24h2v1h-2zM13 24h1v1h-1zM15 24h1v1h-1zM20 24h2v1h-2zM26 24h1v1h-1zM31 24h3v1h-3zM2 25h1v1h-1zM6 25h1v1h-1zM10 25h4v1h-4zM16 25h1v1h-1zM18 25h1v1h-1zM20 25h7v1h-7zM28 25h7v1h-7zM2 26h1v1h-1zM4 26h3v1h-3zM8 26h1v1h-1zM10 26h2v1h-2zM14 26h1v1h-1zM16 26h1v1h-1zM19 26h1v1h-1zM21 26h2v1h-2zM24 26h7v1h-7zM33 26h2v1h-2zM10 27h1v1h-1zM13 27h1v1h-1zM15 27h1v1h-1zM19 27h1v1h-1zM21 27h2v1h-2zM25 27h2v1h-2zM30 27h1v1h-1zM32 27h1v1h-1zM34 27h1v1h-1zM2 28h7v1h-7zM11 28h3v1h-3zM15 28h3v1h-3zM19 28h1v1h-1zM22 28h1v1h-1zM24 28h3v1h-3zM28 28h1v1h-1zM30 28h1v1h-1zM32 28h2v1h-2zM2 29h1v1h-1zM8 29h1v1h-1zM10 29h2v1h-2zM14 29h1v1h-1zM19 29h2v1h-2zM22 29h1v1h-1zM25 29h2v1h-2zM30 29h5v1h-5zM2 30h1v1h-1zM4 30h3v1h-3zM8 30h1v1h-1zM10 30h1v1h-1zM14 30h2v1h-2zM17 30h2v1h-2zM22 30h3v1h-3zM26 30h6v1h-6zM2 31h1v1h-1zM4 31h3v1h-3zM8 31h1v1h-1zM10 31h1v1h-1zM12 31h1v1h-1zM14 31h1v1h-1zM16 31h2v1h-2zM20 31h1v1h-1zM25 31h1v1h-1zM27 31h1v1h-1zM30 31h2v1h-2zM34 31h1v1h-1zM2 32h1v1h-1zM4 32h3v1h-3zM8 32h1v1h-1zM10 32h3v1h-3zM14 32h1v1h-1zM16 32h3v1h-3zM22 32h2v1h-2zM25 32h1v1h-1zM28 32h2v1h-2zM2 33h1v1h-1zM8 33h1v1h-1zM11 33h1v1h-1zM14 33h1v1h-1zM16 33h2v1h-2zM23 33h1v1h-1zM25 33h1v1h-1zM28 33h1v1h-1zM30 33h3v1h-3zM2 34h7v1h-7zM10 34h2v1h-2zM13 34h2v1h-2zM17 34h1v1h-1zM19 34h1v1h-1zM22 34h1v1h-1zM24 34h4v1h-4zM29 34h1v1h-1zM33 34h1v1h-1z"/></svg>';
 (function () {
   'use strict';
 
@@ -3332,13 +3396,16 @@ COURSES.push({
   /* ---------- sound: everything synthesised live with Web Audio (original sounds, no audio files) ---------- */
   var SND = (function () {
     var PK = 'msk-sound-v1';
-    var P = { sfx: true, music: false, vol: 45, dropMode: 'orig', dropStart: 0, dropLen: 8, dropName: '', fx: true, ts: 'm' };
+    var P = { sfx: true, music: false, vol: 45, dropMode: 'orig', dropStart: 0, dropLen: 8, dropName: '', fx: true, ts: 'm', hc: false, easy: false };
     try { var raw = localStorage.getItem(PK); if (raw) { var o = JSON.parse(raw); for (var k in P) if (o[k] !== undefined) P[k] = o[k]; } } catch (e) {}
     function savePrefs() { try { localStorage.setItem(PK, JSON.stringify(P)); } catch (e) {} }
     var TS = { s: '93.75%', m: '100%', l: '112.5%', xl: '125%' };
     function applyTS() { try { document.documentElement.style.fontSize = TS[P.ts] || '100%'; } catch (e) {} }
     applyTS();
     function setTS(k) { P.ts = TS[k] ? k : 'm'; savePrefs(); applyTS(); }
+    function applyDisp() { try { var c = document.documentElement.classList; c.toggle('hc', !!P.hc); c.toggle('easy', !!P.easy); } catch (e) {} }
+    applyDisp();
+    function setDisp(k, v) { P[k] = !!v; savePrefs(); applyDisp(); }
     var VIB = { tick: 12, right: 15, wrong: [30, 40, 30], complete: [20, 30, 20], alarm: [60, 40, 60], drop: [40, 60, 140] };
     function buzz(n) { try { if (P.sfx && navigator.vibrate && VIB[n] !== undefined) navigator.vibrate(VIB[n]); } catch (e) {} }
 
@@ -3563,7 +3630,7 @@ COURSES.push({
     if (P.dropMode === 'file') loadFile();
 
     return {
-      prefs: P, savePrefs: savePrefs, setTS: setTS, sfx: sfx, drop: drop, setMusic: setMusic, setVol: setVol,
+      prefs: P, savePrefs: savePrefs, setTS: setTS, setDisp: setDisp, sfx: sfx, drop: drop, setMusic: setMusic, setVol: setVol,
       musicOn: function () { return !!M.timer; }, saveFile: saveFile, loadFile: loadFile, hasFile: function () { return !!fileURL; }
     };
   })();
@@ -3719,7 +3786,7 @@ COURSES.push({
   function route() {
     var h = CUR !== null ? CUR : (location.hash || '').replace(/^#/, '');
     var parts = h.split('-'), v = parts[0] || 'plan', cid = parts[1];
-    if (['plan', 'notes', 'cards', 'quiz', 'write', 'setup', 'stats'].indexOf(v) < 0) v = 'plan';
+    if (['plan', 'notes', 'cards', 'quiz', 'write', 'setup', 'stats', 'sos', 'install'].indexOf(v) < 0) v = 'plan';
     if (v === 'cards' && (cid === 'all' || cid === 'miss')) return { v: v, cid: cid };
     if (cid && !C[cid]) cid = null;
     return { v: v, cid: cid };
@@ -3738,6 +3805,8 @@ COURSES.push({
     if (VIEW.cardsCourse && VIEW.cardsCourse !== 'all' && VIEW.cardsCourse !== 'miss' && active().indexOf(VIEW.cardsCourse) < 0) VIEW.cardsCourse = null;
     if (r.v === 'setup') renderSetup();
     else if (r.v === 'stats') renderStats();
+    else if (r.v === 'sos') renderSOS(r.cid || sosDefault());
+    else if (r.v === 'install') renderInstall();
     else if (r.v === 'plan') renderPlan();
     else if (r.v === 'notes') renderNotes(r.cid || VIEW.notesCourse || nextExamCourse());
     else if (r.v === 'cards') renderCards(r.cid || VIEW.cardsCourse || 'all');
@@ -3755,18 +3824,18 @@ COURSES.push({
     var jumping = !!VIEW.openUnit;
     CUR = h;
     try { if (location.hash !== '#' + h) { SKIP = h; location.hash = h; } } catch (e) { SKIP = null; }
-    render(); FXV.enter(); if (!jumping) toTop();
+    render(); FXV.enter(); if (!jumping) { toTop(); focusMain(); }
   }
   window.addEventListener('hashchange', function () {
     var h = (location.hash || '').replace(/^#/, '');
     if (SKIP !== null && h === SKIP) { SKIP = null; return; }
-    SKIP = null; CUR = h; var jumping = !!VIEW.openUnit; render(); FXV.enter(); if (!jumping) toTop();
+    SKIP = null; CUR = h; var jumping = !!VIEW.openUnit; render(); FXV.enter(); if (!jumping) { toTop(); focusMain(); }
   });
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="#"]');
     if (!a) return;
     var h = a.getAttribute('href').slice(1);
-    if (!/^(plan|notes|cards|quiz|write|setup|stats)(-|$)/.test(h)) return;
+    if (!/^(plan|notes|cards|quiz|write|setup|stats|sos|install)(-|$)/.test(h)) return;
     e.preventDefault();
     if (a.hasAttribute('data-unit')) VIEW.openUnit = a.getAttribute('data-unit');
     go(h);
@@ -3842,9 +3911,15 @@ COURSES.push({
     PLAN = buildPlan();
     var cs = sortedCourses(), nextId = (cs.find(function (x) { return x.exam >= today; }) || {}).c;
     nextId = nextId ? nextId.id : null;
-    var h = '<header class="top"><div class="top-row"><span class="kicker">Classified // ' + esc(fmt(today)) + '</span><span class="btn-row" style="gap:6px">' + (canInstall() ? '<button type="button" class="link-btn hot" id="to-install">Install</button>' : '') + '<button type="button" class="link-btn" id="to-courses">Courses</button><button type="button" class="link-btn" id="to-backup">Backup</button><button type="button" class="link-btn" id="to-settings">Exam dates</button></span></div>' +
+    var h = '<header class="top"><div class="top-row"><span class="kicker">Classified // ' + esc(fmt(today)) + '</span><span class="btn-row" style="gap:6px">' + '<button type="button" class="link-btn sos" data-go="sos">SOS</button>' + (canInstall() ? '<button type="button" class="link-btn hot" id="to-install">Install</button>' : '<button type="button" class="link-btn" data-go="install">Share</button>') + '<button type="button" class="link-btn" id="to-courses">Courses</button><button type="button" class="link-btn" id="to-backup">Backup</button><button type="button" class="link-btn" id="to-settings">Exam dates</button></span></div>' +
       '<div class="brand"><div class="wordmark">Secret <span>Weapon</span></div><div class="radar" aria-hidden="true"><i style="left:64%;top:30%"></i><i style="left:28%;top:62%;animation-delay:1.1s"></i><i style="left:70%;top:70%;animation-delay:2.2s"></i></div></div><p>' + plural(sortedCourses().length, 'midterm') + '. One of you. This is the plan. Follow it and you’ll be fine; ignore it and, well, you’ll find out.</p></header>';
-    h += '<div class="hazard" aria-hidden="true"></div><div id="install-help"></div>';
+    h += '<div class="hazard" aria-hidden="true"></div>';
+    h += pasteCardHTML();
+    var emerg = cs.filter(function (x) { return inEmergency(x.c.id); });
+    if (emerg.length === 1) h += sosAlertHTML(emerg[0], today);
+    else if (emerg.length > 1) h += '<section class="sos-alert"><span class="label">Emergency // ' + plural(emerg.length, 'exam') + '</span><div class="title">You\u2019re behind on ' + emerg.length + ' exams. All soon.</div><p class="small">Break glass on the closest one first. One at a time, or you\u2019ll do none of them.</p><div class="sos-rows">' +
+      emerg.map(function (x) { var dl = diffDays(today, x.exam); return '<div class="sos-row c-' + x.c.id + '"><span><strong>' + esc(x.c.short) + '</strong> <span class="small">' + whenTxt(dl) + ' \u00b7 ' + readiness(x.c.id).pct + '% ready</span></span><button type="button" class="btn" data-sosgo="' + x.c.id + '">Break glass</button></div>'; }).join('') + '</div></section>';
+    h += installCardHTML();
 
     if (!briefed()) {
       h += '<section class="brief"><div class="hazard" aria-hidden="true"></div><div class="in"><h2>Briefing</h2><ol>' +
@@ -3852,6 +3927,7 @@ COURSES.push({
         '<li>Done? Tick the box. The plan rebuilds itself around what’s left.</li>' +
         '<li>Exam dates are my best guess from the syllabuses. When a professor confirms one, fix it under <strong>Exam dates</strong>.</li>' +
         (canInstall() ? '<li>Put it on your home screen: tap <strong>Install</strong> at the top. It opens like a real app.</li>' : '') +
+        '<li>Left it too late? Hit <strong>SOS</strong>. It builds a 1-hour, 3-hour or all-night cram plan. Triage, not magic.</li>' +
         '<li>Music, sound and animations: the <strong>FX</strong> button in the top bar. Clear a whole day\u2019s orders and something drops.</li>' +
         '</ol><button type="button" class="btn primary" id="briefed">Understood</button></div></section>';
     }
@@ -3871,6 +3947,10 @@ COURSES.push({
       h += '<section class="next-target"><span class="label">Stand down</span><div class="title">Go to sleep.</div><div class="sub">It’s after 10 pm. Your brain saves today’s work while you sleep. The mission resumes tomorrow morning.</div></section>';
     }
 
+    if (emerg.length) {
+      var al = null; try { al = localStorage.getItem('msk-sos-alarm'); } catch (e) {}
+      if (al !== today) { try { localStorage.setItem('msk-sos-alarm', today); } catch (e) {} setTimeout(function () { if (route().v === 'plan' && !document.querySelector('.wn-over')) { SND.sfx('alarm'); FXV.alarm('Emergency'); } }, 2600); }
+    }
     var lastBk = 0; try { lastBk = +localStorage.getItem('msk-lastbackup') || 0; } catch (e) {}
     if (R.status !== 'synced' && hasAnyProgress(S) && Date.now() - lastBk > 3 * 864e5) {
       h += '<div class="note"><strong>No backup ' + (lastBk ? 'in ' + plural(Math.floor((Date.now() - lastBk) / 864e5), 'day') : 'yet') + '</strong>Your progress lives only in this browser. Ten seconds now saves you from crying later. <button type="button" class="linkish" id="bk-nag" style="color:var(--hazard);background:none;border:0;padding:0;font-weight:700;text-decoration:underline">Back up now</button></div>';
@@ -3970,6 +4050,7 @@ COURSES.push({
     var br = document.getElementById('briefed');
     if (br) br.onclick = function () { SND.sfx('complete'); try { localStorage.setItem('msk-briefed', '1'); } catch (e) {} rerenderPlanKeepScroll(); };
     var wn = document.getElementById('whatsnew'); if (wn) wn.onclick = function () { whatsNew(true); };
+    bindSosButtons(); bindInstallCard(); bindPaste();
     var rb = document.getElementById('rebrief');
     if (rb) rb.onclick = function () { try { localStorage.removeItem('msk-briefed'); } catch (e) {} renderPlan(); window.scrollTo(0, 0); };
     function goBackup() { var s = openSettings(); var b = document.getElementById('backup'); if (b) b.scrollIntoView({ block: 'start' }); else if (s) s.scrollIntoView({ block: 'start' }); SND.sfx('tap'); }
@@ -4017,7 +4098,7 @@ COURSES.push({
         '<div class="progress big"><i style="width:' + r.pct + '%"></i></div>' +
         '<p class="small"><strong>' + verdict(r.pct) + '</strong> <span class="muted">' + (left > 0 ? plural(left, 'day') + ' to go' : left === 0 ? 'Exam today' : 'Done') + '</span></p>' +
         '<div class="rps">' + part('Topics', r.parts.topics, r.st.ud + '/' + r.st.ut) + part('Cards', r.parts.cards, r.st.cm + '/' + r.st.ct + ' mastered') + part('Quiz', r.parts.quiz, S.quizBest[c.id] != null ? 'best ' + S.quizBest[c.id] + '%' : 'not yet') + part('Practice', r.parts.practice, r.mocks + ' mock, ' + r.essays + ' essay') + '</div>' +
-        '<div class="btn-row">' + (miss ? '<button type="button" class="btn ghost" data-go="cards-miss">Drill ' + miss + ' miss' + (miss === 1 ? '' : 'es') + '</button>' : '') + '<button type="button" class="btn ghost" data-go="quiz-' + c.id + '">Quiz</button><button type="button" class="btn ghost" data-go="notes-' + c.id + '">Intel</button></div></div>';
+        '<div class="btn-row">' + (left >= 0 && left <= 3 && r.pct < 60 ? '<button type="button" class="btn sos-mini" data-go="sos-' + c.id + '">Break glass</button>' : '') + (miss ? '<button type="button" class="btn ghost" data-go="cards-miss">Drill ' + miss + ' miss' + (miss === 1 ? '' : 'es') + '</button>' : '') + '<button type="button" class="btn ghost" data-go="quiz-' + c.id + '">Quiz</button><button type="button" class="btn ghost" data-go="notes-' + c.id + '">Intel</button></div></div>';
     });
     h += '</div></section>';
 
@@ -4090,8 +4171,15 @@ COURSES.push({
   }
 
   /* ---------- what's new + update check ---------- */
-  var APP_VERSION = '2026.10.31-2';
+  var APP_VERSION = '2026.10.31-3';
   var CHANGES = [
+    { v: '2026.10.31-3', title: 'Emergency mode, easier install', items: [
+      '**Break glass.** Exam in two days or less and you\u2019re behind? An emergency panel shows up on Mission. Pick **1 hour**, **3 hours** or **All night** and you get a triage plan: a one-page cheat sheet, the biggest topics you skipped, speed flashcards and essay plans to steal. Also under the red **SOS** button, any time.',
+      '**Install page** with steps for your exact phone and browser. On Android it\u2019s one tap.',
+      'iPhone: **Copy my progress** before installing, then **Paste progress** in the new app. No more starting from zero.',
+      '**Share** with a QR code. Friends on a laptop scan it and it opens on their phone in the right browser.',
+      '**High contrast** and **Easy read** (no all-caps, plainer fonts) in the FX panel. Plus better screen reader support.'
+    ]},
     { v: '2026.10.31-2', title: 'Progress tracking', items: [
       '**Stats tab** (bar-chart icon): a readiness % for each exam, your study streak, 14 days of activity, and your quiz history.',
       '**Drill my misses**: a flashcard deck with only the cards you got wrong. In Drill, tap **Misses**.',
@@ -4145,6 +4233,240 @@ COURSES.push({
     }).catch(function () {});
   }
 
+  /* ---------- screen reader + focus helpers ---------- */
+  function announce(t) { var el = document.getElementById('sr-live'); if (!el) return; el.textContent = ''; setTimeout(function () { el.textContent = t; }, 60); }
+  function focusMain() { var h1 = app.querySelector('h1'); if (!h1) return; h1.setAttribute('tabindex', '-1'); try { h1.focus({ preventScroll: true }); } catch (e) {} }
+
+  /* ---------- EMERGENCY (break glass) ---------- */
+  var SOS_B = [[60, '1 hour'], [180, '3 hours'], [360, 'All night']];
+  var SOS_OPEN = {};
+  function sosPrefs() { try { return JSON.parse(localStorage.getItem('msk-sos') || '{}') || {}; } catch (e) { return {}; } }
+  function sosSave(p) { try { localStorage.setItem('msk-sos', JSON.stringify(p)); } catch (e) {} }
+  function sosBudget(cid) { var b = sosPrefs()[cid]; if (b === 60 || b === 180 || b === 360) return b; return diffDays(todayStr(), examOf(cid)) <= 0 ? 60 : 180; }
+  function setSosBudget(cid, b) { var p = sosPrefs(); p[cid] = b; sosSave(p); }
+  function inEmergency(cid) { var dl = diffDays(todayStr(), examOf(cid)); return dl >= 0 && dl <= 2 && readiness(cid).pct < 60; }
+  function sosDefault() { var t = todayStr(), e = sortedCourses().find(function (x) { return inEmergency(x.c.id); }) || sortedCourses().find(function (x) { return x.exam >= t; }); return e ? e.c.id : nextExamCourse(); }
+  function whenTxt(dl) { return dl <= 0 ? 'today' : dl === 1 ? 'tomorrow' : 'in ' + plural(dl, 'day'); }
+  function sosKey(cid, id) { return 'sos|' + cid + '|' + examOf(cid) + '|' + id; }
+  // The biggest topics you haven't studied (that are actually on this exam). Chosen once per exam + time budget, so the list doesn't shuffle while you work.
+  function sosDeep(cid, B) {
+    var c = C[cid], ex = examOf(cid), p = sosPrefs(), k = cid + '|' + ex + '|' + B;
+    var ids = p.deep && p.deep[k];
+    var us = ids ? ids.map(function (id) { return c.units.find(function (u) { return u.id === id; }); }).filter(Boolean) : [];
+    if (us.length) return us;
+    var pool = c.units.filter(function (u) { return !doneDate(u.id) && (!u.taught || u.taught <= ex); });
+    if (!pool.length) pool = c.units.filter(function (u) { return u.taught && u.taught <= ex; }).sort(function (a, b) { return (doneDate(a.id) || '') < (doneDate(b.id) || '') ? -1 : 1; }).slice(0, 2);
+    pool = pool.slice().sort(function (a, b) { return (b.taught ? 1 : 0) - (a.taught ? 1 : 0) || (b.mins || 0) - (a.mins || 0); });
+    var cap = B >= 360 ? 150 : 60, t = 0;
+    pool.forEach(function (u) { if (t + u.mins <= cap) { us.push(u); t += u.mins; } });
+    if (!us.length && pool.length) us.push(pool.slice().sort(function (a, b) { return a.mins - b.mins; })[0]);
+    p.deep = p.deep || {}; p.deep[k] = us.map(function (u) { return u.id; }); sosSave(p);
+    return us;
+  }
+  function sosBrief(c) {
+    return '<div class="chips">' + c.format.map(function (f) { return '<span class="chip c-' + c.id + '">' + esc(f) + '</span>'; }).join('') + '</div>' +
+      (c.examNote ? '<p class="small">' + md(c.examNote) + '</p>' : '') +
+      '<ul>' + c.strategy.slice(0, 4).map(function (s) { return '<li>' + md(s) + '</li>'; }).join('') + '</ul>';
+  }
+  function sosSheet(c) {
+    var ex = examOf(c.id);
+    return '<ol class="sheet">' + c.units.filter(function (u) { return u.taught && u.taught <= ex; }).map(function (u) {
+      var q = (u.quotes || [])[0];
+      return '<li><strong>' + md(u.title) + '</strong> <span class="small muted">' + esc(wkLabel(u)) + '</span><p>' + md(u.gist) + '</p>' +
+        (q ? '<p class="small sheet-q">“' + md(q.t) + '” <span class="muted">' + md(q.s) + '</span></p>' : '') + '</li>';
+    }).join('') + '</ol>';
+  }
+  function sosEssays(es) {
+    return es.map(function (e, i) { return '<div class="sec"><h3>' + (i + 1) + '. ' + md(e.q) + '</h3><ul>' + e.plan.map(function (p) { return '<li>' + md(p) + '</li>'; }).join('') + '</ul></div>'; }).join('');
+  }
+  function sosSteps(cid, B) {
+    var c = C[cid], big = B >= 180, night = B >= 360, st = [];
+    st.push({ id: 'brief', t: 'Know the battlefield', m: 5, why: 'What the exam looks like and how this professor grades. Stops you studying for the wrong fight.', body: sosBrief(c), open: 'Show me' });
+    st.push({ id: 'sheet', t: 'Read the cheat sheet. Twice.', m: night ? 30 : big ? 25 : 20, why: 'One line per topic, plus the one quote worth carrying in. Read it, don’t copy it. Copying is procrastination with a pen.', body: sosSheet(c), open: 'Open the cheat sheet' });
+    if (big) {
+      var us = sosDeep(cid, B);
+      st.push({ id: 'deep', t: 'Deep read: ' + (us.length === 1 ? 'the biggest topic' : 'the ' + us.length + ' biggest topics') + ' you skipped', m: us.reduce(function (a, u) { return a + u.mins; }, 0), why: 'Open each one, read it, hit Mark studied. This is where most of your missing marks are.', units: us });
+    }
+    st.push({ id: 'cards', t: 'Speed flashcards', m: night ? 45 : big ? 30 : 15, why: (night ? 'Three rounds' : big ? 'Two rounds' : 'One round') + ' of 20. Be honest with Got it and Missed, then tap Misses and go again.', go: 'cards-' + cid, goT: 'Drill' });
+    var es = (c.essays || []).slice(0, B === 60 ? 2 : 3);
+    if (es.length) st.push({ id: 'essays', t: 'Steal ' + plural(es.length, 'essay plan'), m: night ? 60 : big ? 30 : 15, why: night ? 'Learn the skeletons, then write one for real against the clock.' : 'Learn the skeletons, not the sentences. Whatever they ask, bend the closest one to fit.', body: sosEssays(es), open: 'Show the plans', go: night ? 'write-' + cid : null, goT: 'Write one' });
+    st.push({ id: 'quiz', t: 'Quick quiz', m: night ? 20 : big ? 15 : 5, why: 'Find what didn’t stick and re-read only that. Ignore everything you got right.', go: 'quiz-' + cid, goT: 'Quiz' });
+    if (night) st.push({ id: 'sleep', t: 'Sleep. At least 4–5 hours.', m: 0, why: 'A full all-nighter makes you dumber than anything you skipped. Your brain files tonight’s cramming while you sleep. Set two alarms.' });
+    if (big) st.push({ id: 'morning', t: 'Exam morning: cheat sheet once more', m: night ? 20 : 15, why: 'Step 2, one fast read on the way. Nothing new on exam day. Eat something.' });
+    st.forEach(function (s) { s.done = tick(sosKey(cid, s.id)) || !!(s.units && s.units.length && s.units.every(function (u) { return doneDate(u.id); })); });
+    return st;
+  }
+  function sosAlertHTML(x, today) {
+    var id = x.c.id, dl = diffDays(today, x.exam), r = readiness(id).pct;
+    return '<section class="sos-alert c-' + id + '"><span class="label">Emergency // ' + esc(x.c.code) + '</span>' +
+      '<div class="title">' + esc(x.c.short) + ' is ' + whenTxt(dl) + '. You’re ' + r + '% ready.</div>' +
+      '<p class="small">Break glass. Tell me how long you’ve got and I’ll tell you exactly what to do with it.</p>' +
+      '<div class="sos-btns">' + SOS_B.filter(function (b) { return dl > 0 || b[0] < 360; }).map(function (b) { return '<button type="button" class="btn" data-sos="' + id + '|' + b[0] + '">' + b[1] + '</button>'; }).join('') + '</div></section>';
+  }
+  function bindSosButtons() {
+    app.querySelectorAll('[data-sosgo]').forEach(function (b) { b.onclick = function () { SND.sfx('alarm'); FXV.alarm('Break glass'); go('sos-' + b.getAttribute('data-sosgo')); }; });
+    app.querySelectorAll('[data-sos]').forEach(function (b) {
+      b.onclick = function () { var p = b.getAttribute('data-sos').split('|'); setSosBudget(p[0], +p[1]); SND.sfx('alarm'); FXV.alarm('Break glass'); go('sos-' + p[0]); };
+    });
+  }
+  function renderSOS(cid) {
+    if (!C[cid] || active().indexOf(cid) < 0) cid = nextExamCourse();
+    var c = C[cid], dl = diffDays(todayStr(), examOf(cid)), r = readiness(cid), B = sosBudget(cid);
+    var st = sosSteps(cid, B), tot = 0, done = 0;
+    st.forEach(function (s) { tot += s.m; if (s.done) done += s.m; });
+    var head = dl < 0 ? 'This exam is already over. Pick another one above.' : 'The exam is <strong>' + whenTxt(dl) + '</strong> and you’re <strong>' + r.pct + '% ready</strong>.';
+    var h = header('DEFCON 1 // ' + c.code, 'Break <span style="color:var(--accent)">glass</span>', head + ' Forget perfect. This is triage: grab the marks that are cheapest to grab, skip the rest, sleep.');
+    h += courseSeg(cid, 'sos', false);
+    h += '<section class="panel c-' + cid + '"><div class="panel-head"><h2>How long have you got?</h2></div>' +
+      '<div class="seg sos-seg" role="group" aria-label="Time you have" style="--c:var(--accent)">' + SOS_B.map(function (b) { return '<button type="button" data-sosb="' + b[0] + '" aria-pressed="' + (B === b[0]) + '">' + b[1] + '</button>'; }).join('') + '</div>' +
+      '<div class="today-bar" style="--c:var(--accent)"><div class="progress big"><i style="width:' + Math.round(100 * done / Math.max(1, tot)) + '%"></i></div><span class="label tnum">' + mins(done) + ' of ' + mins(tot) + ' done</span></div>' +
+      '<ol class="items sos-steps">' + st.map(function (s, i) {
+        var x = '<li class="item sos-step c-' + cid + (s.done ? ' done' : '') + '" data-key="sos-' + s.id + '"><span class="tickcell"><input type="checkbox" class="check" data-sosstep="' + s.id + '"' + (s.done ? ' checked' : '') + ' aria-label="Done: ' + esc(s.t) + '"></span>' +
+          '<div class="sos-main"><span class="kind">Step ' + (i + 1) + (s.m ? ' · ' + mins(s.m) : '') + '</span><div class="item-title">' + esc(s.t) + '</div><div class="item-sub">' + s.why + '</div>';
+        if (s.units) x += '<ul class="sos-units">' + s.units.map(function (u) { var d = doneDate(u.id); return '<li><a href="#notes-' + cid + '" data-unit="' + u.id + '"' + (d ? ' class="done"' : '') + '>' + (d ? '✓ ' : '') + esc(u.title) + ' <span class="muted">· ' + mins(u.mins) + '</span></a></li>'; }).join('') + '</ul>';
+        if (s.body) x += '<details class="sos-body" data-sosbody="' + s.id + '"' + (SOS_OPEN[s.id] ? ' open' : '') + '><summary>' + s.open + '</summary><div class="unit-body">' + s.body + '</div></details>';
+        if (s.go) x += '<div><a class="btn primary" href="#' + s.go + '">' + s.goT + ' →</a></div>';
+        return x + '</div></li>';
+      }).join('') + '</ol></section>';
+    h += '<section class="panel"><div class="panel-head"><h2>Emergency rules</h2></div><ul class="rules">' +
+      '<li><strong>No new books.</strong> If you haven’t read the primary text by now, the notes are your text.</li>' +
+      '<li><strong>No pretty notes.</strong> Highlighters are for people with time.</li>' +
+      '<li><strong>Phone on Do Not Disturb.</strong> Yes, while using this phone. You know what I mean.</li>' +
+      '<li><strong>Five minutes off every hour.</strong> Stand up, water, back. Scrolling is not five minutes.</li>' +
+      '<li><strong>In the exam, answer everything.</strong> Half an answer with the right names and one quote beats a blank page every time.</li></ul></section>';
+    app.innerHTML = h;
+    app.querySelectorAll('[data-sosb]').forEach(function (b) { b.onclick = function () { setSosBudget(cid, +b.getAttribute('data-sosb')); SND.sfx('tap'); renderSOS(cid); }; });
+    app.querySelectorAll('[data-sosbody]').forEach(function (d) { d.addEventListener('toggle', function () { SOS_OPEN[d.getAttribute('data-sosbody')] = d.open; }); });
+    app.querySelectorAll('[data-sosstep]').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        var id = cb.getAttribute('data-sosstep');
+        setTick(sosKey(cid, id), cb.checked); SND.sfx(cb.checked ? 'tick' : 'untick');
+        var y = window.scrollY; renderSOS(cid); window.scrollTo(0, y);
+        if (cb.checked) {
+          var left = sosSteps(cid, B).filter(function (s) { return !s.done; }).length;
+          announce(left ? 'Step done. ' + plural(left, 'step') + ' left.' : 'All steps done.');
+          if (!left) win('Survival kit complete', B >= 360 ? 'Now sleep. Seriously.' : 'You did what you could. Go.');
+          else FXV.pop('sos-' + id);
+        }
+      });
+    });
+  }
+
+  /* ---------- INSTALL + SHARE ---------- */
+  var ICO = {
+    share: '<svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M6 11H5v10h14V11h-1"/></svg>',
+    add: '<svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg>',
+    dots: '<svg viewBox="0 0 24 24" class="ico dots" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg>',
+    kebab: '<svg viewBox="0 0 24 24" class="ico dots" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg>'
+  };
+  function shareURL() { return /\.github\.io$/.test(location.hostname) ? location.origin + location.pathname : GH_URL; }
+  function isAndroid() { return /android/i.test(navigator.userAgent); }
+  function inAppBrowser() { return /FBAN|FBAV|Instagram|Line\/|Snapchat|TikTok|musical_ly|Twitter|LinkedInApp|GSA\//i.test(navigator.userAgent); }
+  function iosBrowser() { var ua = navigator.userAgent; return /CriOS/.test(ua) ? 'Chrome' : /EdgiOS/.test(ua) ? 'Edge' : /FxiOS/.test(ua) ? 'Firefox' : 'Safari'; }
+  function copyText(t, ok, fail) {
+    try { navigator.clipboard.writeText(t).then(function () { SND.sfx('tick'); announce(ok()); }, fail); } catch (e) { fail(); }
+  }
+  function shareHTML() {
+    var u = shareURL();
+    return '<section class="panel"><div class="panel-head"><h2>Get it to a friend</h2></div>' +
+      '<p class="small muted">No Claude, no account, nothing to download. They open the link, pick their courses, done.</p>' +
+      '<div class="share-grid"><div class="qr">' + QR_SVG + '</div><div class="share-side"><p class="small"><strong>On a laptop?</strong> Point a phone camera at this. It opens straight in the phone’s real browser, which is the one that can install it.</p>' +
+      '<div class="btn-row">' + (navigator.share ? '<button type="button" class="btn primary" id="sh-native">Share</button>' : '') + '<button type="button" class="btn" id="sh-copy">Copy link</button>' +
+      '<a class="btn" href="https://wa.me/?text=' + encodeURIComponent('Midterm survival kit. Pick your courses and it plans your study for you: ' + u) + '" target="_blank" rel="noopener">WhatsApp</a></div>' +
+      '<p class="small muted tnum" style="word-break:break-all">' + esc(u) + '</p><p class="small" id="sh-msg" role="status"></p></div></div></section>';
+  }
+  function bindShare() {
+    var u = shareURL(), msg = document.getElementById('sh-msg');
+    var n = document.getElementById('sh-native');
+    if (n) n.onclick = function () { SND.sfx('tap'); try { navigator.share({ title: 'Midterm Secret Weapon', text: 'Pick your courses and it plans your midterm study.', url: u }).catch(function () {}); } catch (e) {} };
+    var cp = document.getElementById('sh-copy');
+    if (cp) cp.onclick = function () { copyText(u, function () { msg.textContent = 'Link copied. Paste it anywhere.'; return msg.textContent; }, function () { msg.textContent = 'Copy is blocked here. Long-press the link above to copy it.'; }); };
+  }
+  function renderInstall() {
+    var ios = isIOS(), and = isAndroid(), steps = [], h;
+    h = header('Field kit // Install', 'On your <span style="color:var(--accent)">home screen</span>', 'One tap to open, full screen, works with no internet, updates itself. Takes twenty seconds. You’ll spend longer deciding whether to bother.');
+    if (standalone()) {
+      h += '<section class="panel"><div class="panel-head"><h2>Already installed</h2></div><p>You’re in the app right now. Nothing to do here. Go study.</p></section>';
+    } else if (!window.__PWA) {
+      h += '<section class="panel"><div class="panel-head"><h2>Open the web link first</h2></div><p>Installing only works from the public link, not from inside Claude or a downloaded file. Open the link, then come back to this page there.</p><div class="btn-row"><a class="btn primary" href="' + GH_URL + '#install" target="_blank" rel="noopener">Open the web link</a></div></section>';
+    } else if (installEvt) {
+      h += '<section class="panel inst-one"><div class="panel-head"><h2>One tap</h2></div><p>Your browser can do it by itself. Your progress comes along.</p><button type="button" class="btn primary" id="inst-now" style="width:100%;min-height:58px;font-size:1.35rem">Install now</button></section>';
+    } else {
+      var prog = hasAnyProgress(S);
+      if (ios) {
+        if (inAppBrowser()) steps.push('You’re inside another app’s browser, and it can’t install anything. Tap ' + ICO.dots + ' or the compass icon and pick <strong>Open in Safari</strong>. Or copy the link at the bottom and paste it into Safari.');
+        if (prog) steps.push('<strong>Copy your progress first.</strong> On iPhone the home-screen app starts empty, because Apple.<div class="btn-row" style="margin-top:8px"><button type="button" class="btn" id="inst-copy">Copy my progress</button></div><div id="inst-copy-out"></div><span class="small" id="inst-copy-msg" role="status"></span>');
+        var br = iosBrowser();
+        if (br === 'Safari') steps.push('Tap <strong>Share</strong> ' + ICO.share + ' in the bar at the bottom. On newer iPhones it’s inside the ' + ICO.dots + ' button first.');
+        else steps.push('Tap <strong>Share</strong> ' + ICO.share + ' in ' + br + '’s address bar. (Old iPhone? Then use Safari instead.)');
+        steps.push('Scroll down, tap <strong>Add to Home Screen</strong> ' + ICO.add + '. Not there? Tap <strong>Edit Actions</strong> at the very bottom and add it.');
+        steps.push('Leave <strong>Open as Web App</strong> on and tap <strong>Add</strong>.');
+        if (prog) steps.push('Open the new icon and tap <strong>Paste progress</strong>. Everything’s back.');
+      } else if (and) {
+        steps.push('Open the browser menu: ' + ICO.kebab + ' at the top right in Chrome, or ≡ at the bottom in Samsung Internet.');
+        steps.push('Tap <strong>Install app</strong> or <strong>Add to Home screen</strong>.');
+        steps.push('Confirm. Your progress comes along by itself.');
+      } else {
+        steps.push('<strong>Chrome or Edge:</strong> click the install icon at the right end of the address bar, or menu → <strong>Install</strong>.');
+        steps.push('<strong>Safari on a Mac:</strong> File → <strong>Add to Dock</strong>.');
+        steps.push('<strong>Firefox:</strong> doesn’t install sites. Bookmark it, or scan the code below with your phone.');
+      }
+      h += '<section class="panel"><div class="panel-head"><h2>' + (ios ? 'iPhone' : and ? 'Android' : 'Computer') + ', step by step</h2></div><ol class="steps-big">' + steps.map(function (s) { return '<li><div>' + s + '</div></li>'; }).join('') + '</ol></section>';
+    }
+    h += shareHTML();
+    if (window.__PWA && !standalone()) h += '<section class="panel"><div class="panel-head"><h2>Why bother</h2></div><ul class="rules"><li>Opens in one tap, full screen, no browser bars.</li><li>Works on the bus with no signal.</li><li>Updates itself. When something changes, you get it.</li><li>Your progress stays on your phone. Nobody else sees it.</li></ul></section>';
+    app.innerHTML = h;
+    var now = document.getElementById('inst-now'); if (now) now.onclick = doInstall;
+    var ic = document.getElementById('inst-copy');
+    if (ic) ic.onclick = function () {
+      var code = backupCode(), m = document.getElementById('inst-copy-msg');
+      copyText(code, function () { markBackedUp(); m.textContent = 'Copied. Now do the next steps, open the icon and tap Paste progress.'; return m.textContent; }, function () {
+        var o = document.getElementById('inst-copy-out'); o.innerHTML = '<textarea readonly style="min-height:80px;margin-top:8px" aria-label="Your progress code">' + esc(code) + '</textarea>';
+        var ta = o.querySelector('textarea'); try { ta.focus(); ta.select(); } catch (e) {}
+        m.textContent = 'Copy is blocked here. Long-press the box, Select All, Copy.'; markBackedUp();
+      });
+    };
+    bindShare();
+  }
+  function installCardHTML() {
+    if (!canInstall() || !briefed() || !(installEvt || isIOS() || isAndroid())) return '';
+    var later = 0; try { later = +localStorage.getItem('msk-install-later') || 0; } catch (e) {}
+    if (Date.now() - later < 5 * 864e5) return '';
+    return '<section class="inst-card"><div><strong>Make it an app.</strong> <span class="small muted">One tap from your home screen, works offline, 20 seconds.</span></div><div class="btn-row"><button type="button" class="btn primary" id="ic-go">Install</button><button type="button" class="link-btn" id="ic-later">Not now</button></div></section>';
+  }
+  function bindInstallCard() {
+    var g = document.getElementById('ic-go'); if (g) g.onclick = doInstall;
+    var l = document.getElementById('ic-later'); if (l) l.onclick = function () { try { localStorage.setItem('msk-install-later', String(Date.now())); } catch (e) {} var c = l.closest('.inst-card'); if (c) c.remove(); SND.sfx('tap'); };
+  }
+  // A fresh home-screen app on iPhone starts empty: offer to pull the progress copied from Safari.
+  function pasteCardHTML() {
+    if (!standalone() || hasAnyProgress(S)) return '';
+    var dis = false; try { dis = localStorage.getItem('msk-paste-done') === '1'; } catch (e) {}
+    if (dis) return '';
+    return '<section class="panel paste-card"><div class="panel-head"><h2>Coming from Safari?</h2><button type="button" class="link-btn" id="pc-x">Fresh start</button></div><p class="small">If you copied your progress before installing, bring it over in one tap.</p><div class="btn-row"><button type="button" class="btn primary" id="pc-paste">Paste progress</button></div><div id="pc-manual"></div><p class="small" id="pc-msg" role="status"></p></section>';
+  }
+  function bindPaste() {
+    var b = document.getElementById('pc-paste'); if (!b) return;
+    var msg = document.getElementById('pc-msg'), man = document.getElementById('pc-manual');
+    var apply = function (txt) {
+      try {
+        applyCode(readCode(txt)); try { localStorage.setItem('msk-paste-done', '1'); } catch (e) {}
+        SND.sfx('complete'); go(S.courses && S.courses.length ? 'plan' : 'setup'); setTimeout(function () { announce('Progress restored.'); }, 100);
+      } catch (e) { msg.textContent = e.message || 'Couldn’t read that.'; SND.sfx('wrong'); if (!document.getElementById('pc-in')) manual(); }
+    };
+    var manual = function (why) {
+      man.innerHTML = '<textarea id="pc-in" style="min-height:80px;margin-top:4px" placeholder="Paste the code here (it starts with SECRETWEAPON1:)" aria-label="Progress code"></textarea><div class="btn-row" style="margin-top:8px"><button type="button" class="btn" id="pc-go">Restore</button></div>';
+      if (why) msg.textContent = why;
+      document.getElementById('pc-go').onclick = function () { apply(document.getElementById('pc-in').value); };
+    };
+    b.onclick = function () {
+      var blocked = function () { manual('Paste is blocked here. Long-press the box, tap Paste, then Restore.'); };
+      try { navigator.clipboard.readText().then(apply, blocked); } catch (e) { blocked(); }
+    };
+    var x = document.getElementById('pc-x');
+    if (x) x.onclick = function () { try { localStorage.setItem('msk-paste-done', '1'); } catch (e) {} var c = x.closest('.paste-card'); if (c) c.remove(); SND.sfx('tap'); };
+  }
+
   /* ---------- course picker ---------- */
   var PICK = null;
   function renderSetup() {
@@ -4159,6 +4481,7 @@ COURSES.push({
     var first = !(S.courses && S.courses.length);
     var list = ORDER.slice().sort(function (a, b) { return examOf(a) < examOf(b) ? -1 : examOf(a) > examOf(b) ? 1 : 0; });
     var h = header('Classified // Clearance', first ? 'Pick your targets' : 'Change your targets', 'Tick only the classes you actually take. Everything else disappears from your plan, notes and drills. You can change it any time.');
+    h += pasteCardHTML();
     h += '<section class="pick-grid">' + list.map(function (id) {
       var c = C[id], on = PICK.indexOf(id) >= 0;
       return '<button type="button" class="pick c-' + id + '" data-pick="' + id + '" aria-pressed="' + on + '"><span class="pick-box" aria-hidden="true"></span><span class="pick-body"><span class="label">' + esc(c.code) + '</span><span class="pick-name">' + esc(c.name) + '</span><span class="small muted">' + esc(c.prof) + '</span><span class="small">Midterm ' + fmt(examOf(id)) + ' · ' + esc(c.weight) + '</span></span></button>';
@@ -4166,6 +4489,7 @@ COURSES.push({
     h += '<div class="btn-row"><button type="button" class="btn ghost" id="pick-all">Select all</button><button type="button" class="btn ghost" id="pick-none">Clear</button></div>';
     h += '<button type="button" class="btn primary" id="pick-go" style="width:100%;min-height:58px;font-size:1.35rem"' + (PICK.length ? '' : ' disabled') + '>' + (PICK.length ? 'Lock in ' + plural(PICK.length, 'target') + ' →' : 'Pick at least one') + '</button>';
     app.innerHTML = h;
+    bindPaste();
     app.querySelectorAll('[data-pick]').forEach(function (b) {
       b.onclick = function () {
         var id = b.getAttribute('data-pick'), i = PICK.indexOf(id);
@@ -4196,17 +4520,10 @@ COURSES.push({
     SND.sfx('tap');
     if (installEvt) {
       var ev = installEvt; installEvt = null;
-      try { ev.prompt(); ev.userChoice.then(function () { rerenderPlanKeepScroll(); }, function () {}); } catch (e) {}
+      try { ev.prompt(); ev.userChoice.then(function () { render(); }, function () {}); } catch (e) {}
       return;
     }
-    var box = document.getElementById('install-help'); if (!box) return;
-    var steps = isIOS()
-      ? '<li>Open this page in <strong>Safari</strong>. If you opened it inside WhatsApp or Instagram, use “Open in Safari” first.</li><li>Tap the <strong>Share</strong> button (the square with an arrow).</li><li>Scroll down, tap <strong>Add to Home Screen</strong>, then <strong>Add</strong>.</li>'
-      : '<li>Open your browser menu (<strong>⋮</strong> top right in Chrome).</li><li>Tap <strong>Install app</strong> or <strong>Add to Home screen</strong>.</li><li>Confirm. The icon appears on your home screen.</li>';
-    box.innerHTML = '<section class="panel"><div class="panel-head"><h2>Install it</h2><button type="button" class="link-btn" id="ih-close">Close</button></div><ol class="st-ol">' + steps + '</ol>' +
-      '<p class="small muted"><strong style="color:var(--hazard)">Before you switch:</strong> the home-screen app keeps its own progress' + (isIOS() ? ' (iPhones keep Safari and the icon separate)' : '') + '. Tap <strong>Backup → Copy backup code</strong> here first, then open the icon and paste it into <strong>Backup → Restore</strong>.</p></section>';
-    document.getElementById('ih-close').onclick = function () { box.innerHTML = ''; };
-    box.scrollIntoView({ block: 'start' });
+    go('install');
   }
 
   /* ---------- backup codes ---------- */
@@ -4222,14 +4539,16 @@ COURSES.push({
     if (!o || !o.s) throw new Error('The code is damaged. Copy it again, all of it.');
     return o;
   }
+  function applyCode(o) {
+    S = merge(S, o.s);
+    Object.keys(o.d || {}).forEach(function (k) { if (!drafts[k] || String(o.d[k]).length > drafts[k].length) drafts[k] = o.d[k]; });
+    save(); saveDrafts(); markBackedUp(); PICK = null; CS = null; QS = null;
+  }
   function markBackedUp() { try { localStorage.setItem('msk-lastbackup', String(Date.now())); } catch (e) {} }
   function restoreFrom(text) {
     var msg = document.getElementById('bk-msg');
     try {
-      var o = readCode(text);
-      S = merge(S, o.s);
-      Object.keys(o.d || {}).forEach(function (k) { if (!drafts[k] || String(o.d[k]).length > drafts[k].length) drafts[k] = o.d[k]; });
-      save(); saveDrafts(); markBackedUp();
+      applyCode(readCode(text));
       SND.sfx('complete');
       rerenderPlanKeepScroll(); openSettings();
       var m2 = document.getElementById('bk-msg'); if (m2) m2.textContent = 'Restored. Everything from that backup is back, merged with what was already here.';
@@ -4410,6 +4729,8 @@ COURSES.push({
     if (!QS || QS.i >= QS.qs.length || QS.pick !== null) return;
     var q = QS.qs[QS.i]; if (i < 0 || i >= q.o.length) return;
     QS.pick = i; QS.anim = true; if (i === q.a) { QS.score++; SND.sfx('right'); } else { SND.sfx('wrong'); FXV.shake(); } renderQuiz(QS.cid);
+    announce(i === q.a ? 'Hit. Correct.' : 'Miss. The answer was: ' + plain(q.o[q.a]));
+    var nx = document.getElementById('qnext'); if (nx) try { nx.focus({ preventScroll: true }); } catch (e) {}
   }
   function quizNext() {
     if (!QS || QS.pick === null) return; QS.i++; QS.pick = null;
@@ -4583,6 +4904,8 @@ COURSES.push({
     h += '<div class="snd-row"><span class="label">Effects</span><button type="button" class="btn tog" id="snd-sfx" aria-pressed="' + !!P.sfx + '">' + (P.sfx ? 'On' : 'Off') + '</button><span class="small muted">Clicks, hits, misses, and the drop.</span></div>';
     h += '<div class="snd-row"><span class="label">Animations</span><button type="button" class="btn tog" id="snd-fx" aria-pressed="' + (P.fx !== false) + '">' + (P.fx !== false ? 'On' : 'Off') + '</button><span class="small muted">Turn off if your phone is slow or it\u2019s too much.</span></div>';
     h += '<div class="snd-row"><span class="label">Text size</span><div class="seg" style="flex:1;--c:var(--accent)">' + [['s', 'S'], ['m', 'M'], ['l', 'L'], ['xl', 'XL']].map(function (x) { return '<button type="button" data-ts="' + x[0] + '" aria-pressed="' + ((P.ts || 'm') === x[0]) + '">' + x[1] + '</button>'; }).join('') + '</div></div>';
+    h += '<div class="snd-row"><span class="label">Contrast</span><button type="button" class="btn tog" id="snd-hc" aria-pressed="' + !!P.hc + '">' + (P.hc ? 'High' : 'Normal') + '</button><span class="small muted">Brighter text and borders.</span></div>';
+    h += '<div class="snd-row"><span class="label">Easy read</span><button type="button" class="btn tog" id="snd-easy" aria-pressed="' + !!P.easy + '">' + (P.easy ? 'On' : 'Off') + '</button><span class="small muted">No all-caps, no squashed fonts, more space between lines.</span></div>';
     h += '<div class="snd-row"><span class="label">The drop</span><div class="seg" style="flex:1;--c:var(--accent)"><button type="button" data-dropmode="orig" aria-pressed="' + (P.dropMode !== 'file') + '">Original</button><button type="button" data-dropmode="file" aria-pressed="' + (P.dropMode === 'file') + '">My audio file</button></div></div>';
     if (P.dropMode === 'file') {
       h += '<div class="snd-row"><input type="file" id="snd-file" accept="audio/*" aria-label="Choose an audio file"></div>' +
@@ -4596,6 +4919,8 @@ COURSES.push({
     document.getElementById('snd-music').onclick = function () { SND.setMusic(!SND.prefs.music); renderSoundPanel(); soundButtons(); };
     document.getElementById('snd-vol').oninput = function (e) { SND.setVol(+e.target.value); };
     document.getElementById('snd-sfx').onclick = function () { SND.prefs.sfx = !SND.prefs.sfx; SND.savePrefs(); SND.sfx('tick'); renderSoundPanel(); };
+    document.getElementById('snd-hc').onclick = function () { SND.setDisp('hc', !SND.prefs.hc); SND.sfx('tap'); renderSoundPanel(); };
+    document.getElementById('snd-easy').onclick = function () { SND.setDisp('easy', !SND.prefs.easy); SND.sfx('tap'); renderSoundPanel(); };
     sp.querySelectorAll('[data-ts]').forEach(function (b) { b.onclick = function () { SND.setTS(b.getAttribute('data-ts')); SND.sfx('tap'); renderSoundPanel(); }; });
     sp.querySelectorAll('[data-dropmode]').forEach(function (b) { b.onclick = function () { SND.prefs.dropMode = b.getAttribute('data-dropmode'); SND.savePrefs(); SND.sfx('tap'); if (SND.prefs.dropMode === 'file') SND.loadFile().then(renderSoundPanel); renderSoundPanel(); }; });
     var fi = document.getElementById('snd-file');
@@ -4632,6 +4957,8 @@ COURSES.push({
       else if (e.key === 'Enter' && QS.pick !== null) { e.preventDefault(); quizNext(); }
     }
   });
+
+  var skipB = document.getElementById('skip'); if (skipB) skipB.onclick = function () { focusMain(); var h1 = app.querySelector('h1'); if (h1) h1.scrollIntoView({ block: 'start' }); };
 
   /* ---------- boot ---------- */
   window.__msk = { buildPlan: buildPlan, state: function () { return S; }, C: C };
