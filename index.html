@@ -5184,7 +5184,7 @@ COURSES.push({
     return us;
   }
   function sosBrief(c) {
-    return '<div class="chips">' + c.format.map(function (f) { return '<span class="chip c-' + c.id + '">' + esc(f) + '</span>'; }).join('') + '</div>' +
+    return '<div class="chips">' + c.format.map(function (f) { return '<span class="chip c-' + c.id + '">' + md(f) + '</span>'; }).join('') + '</div>' +
       (c.examNote ? '<p class="small">' + md(c.examNote) + '</p>' : '') +
       '<ul>' + c.strategy.slice(0, 4).map(function (s) { return '<li>' + md(s) + '</li>'; }).join('') + '</ul>';
   }
